@@ -1,5 +1,9 @@
 // Read an INI file into easy-to-access name/value pairs.
 
+#ifdef __YIP__
+#include <yip-imports/strtod.h>
+#endif
+
 #include <algorithm>
 #include <cctype>
 #include <cstdlib>
@@ -39,7 +43,11 @@ double INIReader::GetReal(string section, string name, double default_value)
     string valstr = Get(section, name, "");
     const char* value = valstr.c_str();
     char* end;
+  #ifdef __YIP__
+    double n = p_strtod(value, &end);
+  #else
     double n = strtod(value, &end);
+  #endif
     return end > value ? n : default_value;
 }
 
