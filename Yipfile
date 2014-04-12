@@ -27,11 +27,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."
 
 public_headers
 {
+	cpp/INIReader.h
 	ini.h
 }
 
 sources
 {
+	cpp/INIReader.cpp
 	ini.c
 }
 
